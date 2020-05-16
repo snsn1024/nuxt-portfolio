@@ -1,8 +1,10 @@
 <template>
     <div class="w-full my-3 py-2 bg-white overflow-hidden shadow-lg">
-        <div class="absolute bg-white py-1 px-3 rounded shadow mt-2 ml-2 text-xs">
-            タグ
-        </div>
+        <nuxt-link :to="'/category/' + work.fields.category.sys.id">
+            <div class="absolute bg-white py-1 px-3 rounded shadow mt-2 ml-2 text-xs">
+                {{ work.fields.category.fields.name }}
+            </div>
+        </nuxt-link>
         <div 
             class="mb-3 w-full h-64 bg-center bg-cover"
             :style=" 'background-image: url(' + work.fields.image.fields.file.url + ')' "
