@@ -36,18 +36,18 @@
 </template>
 
 <script>
-import { faLink } from '@fortawesome/free-solid-svg-icons'
-import { faGithub } from '@fortawesome/free-brands-svg-icons'
+    import { faLink } from '@fortawesome/free-solid-svg-icons'
+    import { faGithub } from '@fortawesome/free-brands-svg-icons'
     import { createClient } from '~/plugins/contentful.js'
     const client = createClient()
     export default {
         asyncData({params}) {
             return Promise.all([
                 client.getEntries({
-                    'content.type': 'work',
+                    'content_type': 'work',
                     'fields.slug': params.slug
                 })
-            ]).then(([work]) => {
+            ]).then(([works]) => {
                 return {
                     work: works.items[0]
                 }
