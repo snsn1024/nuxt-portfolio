@@ -5,7 +5,7 @@
             :style=" 'background-image: url(' + work.fields.image.fields.file.url + ')' "
         ></div>
         <nuxt-link :to="'/category/' + work.fields.category.sys.id">
-        <div class="absolute bg-white py-1 px-3 rounded shadow mt-2 ml-2 text-xs">
+        <div class="absolute bg-white py-1 px-3 rounded shadow mt-1 ml-1 text-xs">
             {{ work.fields.category.fields.name }}
         </div>
         </nuxt-link>
