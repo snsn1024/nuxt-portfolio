@@ -67,18 +67,8 @@ export default {
   fontawesome: {
     component: 'fa'
   },
-  /*
-  ** Build configuration
-  */
-  build: {
-    /*
-    ** You can extend webpack config here
-    */
-    extend (config, ctx) {
-    }
-  }
   generate: {
-    routes() {
+    routes () {
       return Promise.all([
         client.getEntries({
           'content_type': 'work'
@@ -89,13 +79,23 @@ export default {
         client.getEntries({
           'content_type': 'tag'
         })
-      ]).then(([works, categories, tag]) => {
+      ]).then(([works,categories,tags]) => {
         return [
           ...works.items.map(work => `work/${work.fields.slug}`),
           ...categories.items.map(category => `category/${category.fields.slug}`),
-          ...TimeRanges.items.map(tag => `tag/${tag.sys.id}`)
+          ...tags.items.map(tag => `tag/${tag.sys.id}`)
         ]
       })
+    }
+  },
+  /*
+  ** Build configuration
+  */
+  build: {
+    /*
+    ** You can extend webpack config here
+    */
+    extend (config, ctx) {
     }
   }
 }
